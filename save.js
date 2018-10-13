@@ -1,7 +1,12 @@
 const { readFileSync, writeFileSync, existsSync } = require('fs')
 const { join } = require('path')
+const { https } = require('https')
 
 const CONF_FILE = join(process.env.USERPROFILE, 'dpl_now_url.json')
+
+const putpost = (data, method) => {
+  // TODO: ...
+}
 
 module.exports = () => {
   var url
@@ -12,7 +17,7 @@ module.exports = () => {
   } else {
     url = JSON.parse(readFileSync(CONF_FILE)).myjsonstore
   }
-  
+
   return async save (k, v = process.env.NOW_URL) => {
     // TODO: put to majsonstore
   }
