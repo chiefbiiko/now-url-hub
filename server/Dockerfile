@@ -1,6 +1,5 @@
 FROM node:10-alpine
 WORKDIR /nowurlhub/
-COPY package.json /nowurlhub/
-RUN npm i --only production
 COPY index.js /nowurlhub/
+EXPOSE 41900
 CMD node ./index
