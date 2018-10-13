@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "turbo-http": "0.3.0"
+  }
+}

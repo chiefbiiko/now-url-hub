@@ -1,0 +1,16 @@
+{
+  "type": "docker",
+  "name": "nowurlhub",
+  "alias": "nowurlhub",
+  "env": {
+    "NODE_ENV": "production",
+    "HOST": "0.0.0.0",
+    "PORT": "41900"
+  },
+  "scale": {
+    "bru1": {
+      "min": 0,
+      "max": 1
+    }
+  }
+}
