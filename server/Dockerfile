@@ -3,4 +3,4 @@ WORKDIR /nowurlhub/
 COPY package.json /nowurlhub/
 RUN npm i --only production
 COPY index.js /nowurlhub/
-CMD npm start
+CMD node ./index
