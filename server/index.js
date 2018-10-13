@@ -1,4 +1,4 @@
-const turbo = require('turbo-http')
+const { createServer } = require('http')
 const { parse } = require('url')
 
 const PORT = parseInt(process.env.PORT) || 41900
@@ -15,35 +15,39 @@ const areTruStr = (...xyz) => {
 const end = (res, statusCode, data) => {
   res.statusCode = statusCode
   res.end(data)
+  console.log(`response end; statusCode: ${statusCode}, data: ${data}`)
 }
 
 const consume = (readable, cb) => {
   var buf = Buffer.alloc(0)
-  readable
-    .once('error', cb)
-    .on('data', chunk => { buf = Buffer.concat([ buf, chunk ]) })
-    .once('end', () => {
-      try { cb(null, JSON.parse(buf)) }
-      catch (err) { cb(err) }
-    })
+  readable.once('error', cb)
+  readable.on('data', chunk => { buf = Buffer.concat([ buf, chunk ]) })
+  readable.once('end', () => {
+    try { cb(null, JSON.parse(buf)) }
+    catch (err) { cb(err) }
+  })
 }
 
 const handler = (req, res) => {
+  const method = req.method.toLowerCase()
   const pathname = parse(req.url).pathname
   if (!pathname.startsWith('/alias')) {
     return end(res, 404)
-  } else if (req.method === 'get') {
+  } else if (method === 'get') {
+    // FIXME: get that alias reliably!!!!!!!!!
     const alias = pathname.replace(/^.+\/alias\//, '').replace(pathname, '')
+    console.log('aLIAS', alias)
     if (!alias) return end(res, 400)
     if (!ALIAS.has(alias)) return end(res, 404)
-    return end(res, 200, JSON.stringify({ url: ALIAS.get(alias) }))
-  } else if (req.method === 'post') {
+    return end(res, 200, JSON.stringify({ alias, url: ALIAS.get(alias) }))
+  } else if (method === 'post') {
     consume(req, (err, data) => {
       if (err) return end(res, 500)
       if (!areTruStr(data.alias, data.url, data.password)) return end(res, 400)
       if (!PASSW.has(data.alias)) PASSW.set(data.alias, data.password)
       else if (data.password !== PASSW.get(data.alias)) return end(res, 401)
       ALIAS.set(data.alias, data.url)
+      console.log(`${data.alias} -> ${data.url}`)
       return end(res, 200)
     })
   } else {
@@ -51,6 +55,6 @@ const handler = (req, res) => {
   }
 }
 
-const server = turbo.createServer(handler)
+const server = createServer(handler)
 
 server.listen(PORT, HOST, () => console.log(`server live @ ${HOST}:${PORT}`))
