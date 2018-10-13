@@ -34,9 +34,7 @@ const handler = (req, res) => {
   if (!pathname.startsWith('/alias')) {
     return end(res, 404)
   } else if (method === 'get') {
-    // FIXME: get that alias reliably!!!!!!!!!
-    const alias = pathname.replace(/^.+\/alias\//, '').replace(pathname, '')
-    console.log('aLIAS', alias)
+    const alias = pathname.replace(/^.*\/alias\//, '').replace(pathname, '')
     if (!alias) return end(res, 400)
     if (!ALIAS.has(alias)) return end(res, 404)
     return end(res, 200, JSON.stringify({ alias, url: ALIAS.get(alias) }))
