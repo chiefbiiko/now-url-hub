@@ -1,5 +1,7 @@
-module.exports = async k => {
- // TODO: get v<-k from some kind of browser-accesible dht
- const v = undefined
- return v
+const NOW_URL_HUB = 'nowurlhub-fzaxeragjt.now.sh' // !
+
+module.exports = async alias => {
+  if (global) var fetch = require('node-fetch')
+  const res = await fetch(NOW_URL_HUB)
+  return await res.json()
 }
