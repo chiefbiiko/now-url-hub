@@ -15,7 +15,7 @@ const areTruStr = (...xyz) => {
 const end = (res, statusCode, data) => {
   res.statusCode = statusCode
   res.end(data)
-  console.log(`response end; statusCode: ${statusCode}, data: ${data}`)
+  console.log(`response; statusCode: ${statusCode}, data: ${data}`)
 }
 
 const consume = (readable, cb) => {
@@ -31,6 +31,7 @@ const consume = (readable, cb) => {
 const handler = (req, res) => {
   const method = req.method.toLowerCase()
   const pathname = parse(req.url).pathname
+  console.log(`request; method: ${method}, path: ${pathname}`)
   if (!pathname.startsWith('/alias')) {
     return end(res, 404)
   } else if (method === 'get') {
