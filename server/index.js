@@ -43,7 +43,7 @@ const handler = (req, res) => {
       if (err) return end(res, 500)
       if (!areTruStr(data.alias, data.url, data.password)) return end(res, 400)
       if (!PASSW.has(data.alias)) PASSW.set(data.alias, data.password)
-      else if (data.password !== PASSW.get(data.alias)) return end(res, 401)
+      if (data.password !== PASSW.get(data.alias)) return end(res, 401)
       ALIAS.set(data.alias, data.url)
       console.log(`${data.alias} -> ${data.url}`)
       return end(res, 200)
