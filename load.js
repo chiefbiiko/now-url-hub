@@ -1,7 +1,8 @@
+// meant for borwser use only
+
 const NOW_URL_HUB = 'nowurlhub-fzaxeragjt.now.sh' // !
 
 module.exports = async alias => {
-  if (global) var fetch = require('node-fetch')
-  const res = await fetch(NOW_URL_HUB)
+  const res = await fetch(`https://${NOW_URL_HUB}/alias/${alias}`)
   return await res.json()
 }

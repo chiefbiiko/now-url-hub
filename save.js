@@ -1,3 +1,5 @@
+// meant for node use only
+
 const { request } = require('https')
 
 const NOW_URL_HUB = 'nowurlhub-fzaxeragjt.now.sh' // !

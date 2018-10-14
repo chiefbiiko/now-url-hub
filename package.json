@@ -4,7 +4,7 @@
   "description": "easily access ur now deployment urls",
   "main": "./index.js",
   "bin": {
-    "dpl-now-url": "./cli.js"
+    "nowurlhub": "./cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
