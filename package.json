@@ -1,17 +1,18 @@
 {
-  "name": "dpl-now-url",
+  "name": "now-url-hub",
   "version": "0.0.0",
-  "description": "easily access ur now deployment urls",
+  "description": "easily manage ur oss now deployment urls",
   "main": "./index.js",
   "bin": {
-    "nowurlhub": "./cli.js"
+    "now-url-hub": "./cli.js"
   },
+  "unpkg": "./browser_load.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiefbiiko/dpl-now-url.git"
+    "url": "git+https://github.com/chiefbiiko/now-url-hub.git"
   },
   "keywords": [
     "now",
@@ -24,7 +25,10 @@
   "author": "Noah Anabiik Schwarz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chiefbiiko/dpl-now-url/issues"
+    "url": "https://github.com/chiefbiiko/now-url-hub/issues"
   },
-  "homepage": "https://github.com/chiefbiiko/dpl-now-url#readme"
+  "homepage": "https://github.com/chiefbiiko/now-url-hub#readme",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }

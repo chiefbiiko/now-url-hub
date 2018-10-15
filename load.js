@@ -1,4 +1,4 @@
-// meant for borwser use only
+// meant for browser use only
 
 const NOW_URL_HUB = 'nowurlhub-fzaxeragjt.now.sh' // !
 

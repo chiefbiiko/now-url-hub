@@ -1,7 +1,7 @@
 {
   "type": "docker",
-  "name": "nowurlhub",
-  "alias": "nowurlhub",
+  "name": "now-url-hub",
+  "alias": "now-url-hub",
   "env": {
     "NODE_ENV": "production",
     "HOST": "0.0.0.0",
