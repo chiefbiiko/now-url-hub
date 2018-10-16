@@ -19,9 +19,9 @@ if (argv.help) {
   process.exit(0)
 }
 
-const alias = argv.alias || process.env.ALIAS
+const alias = argv.alias || process.env.NUH_ALIAS
 const url = argv.url || process.env.NOW_URL
-const password = argv.password || process.env.PASSWORD
+const password = argv.password || process.env.NUH_PASSWORD
 
 save(alias, url, password)
   .then(() => console.log(`${alias} -> ${url} mapping saved successfully`))

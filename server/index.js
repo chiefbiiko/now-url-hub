@@ -32,10 +32,10 @@ const handler = (req, res) => {
   const method = req.method.toLowerCase()
   const pathname = parse(req.url).pathname
   console.log(`request; method: ${method}, path: ${pathname}`)
-  if (!pathname.startsWith('/alias')) {
+  if (!pathname.startsWith('/mappings')) {
     return end(res, 404)
   } else if (method === 'get') {
-    const alias = pathname.replace(/^.*\/alias\//, '').replace(pathname, '')
+    const alias = pathname.replace(/^.*\/mappings\//, '').replace(pathname, '')
     if (!alias) return end(res, 400)
     if (!ALIAS.has(alias)) return end(res, 404)
     return end(res, 200, JSON.stringify({ alias, url: ALIAS.get(alias) }))

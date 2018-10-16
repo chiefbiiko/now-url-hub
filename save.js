@@ -2,14 +2,14 @@
 
 const { request } = require('https')
 
-const NOW_URL_HUB = 'nowurlhub-fzaxeragjt.now.sh' // !
+const NOW_URL_HUB = 'now-url-hub-ipmtcknuik.now.sh' // !
 
 module.exports = (alias, url, password) => {
   return new Promise((resolve, reject) => {
     request({
       host: NOW_URL_HUB,
       port: 41900,
-      path: '/alias',
+      path: '/mappings',
       method: 'POST'
     }, res =>
       res.statusCode === 200
