@@ -14,23 +14,29 @@ You are deploying on now under the OSS plan. You serve a frontend that does reco
 
 When deploying your server on now you need to run this module's cli in order to post your deployment url under an alias. That way, the `now-url-hub` server always has the latest deployment url:
 
-1. Run `now secrets add nuh_pass <YO PASSWORD>` from a terminal. The password is used to ensure that only you can update the url an alias points to.
+1. Run `now secrets add now_url_hub_password <YO PASSWORD>` from a terminal. The password is used to ensure that only you can update the url an alias points to.
 
-2. When running `now` or inside `now.json` pass an alias, and yo password on as environment variables:
+2. When running `now` or inside `now.json` pass yo password on as environment variable:
 
 ``` js
 {
   ...,
   "env": {
-    "NUH_PASSWORD": "@nuh_pass",
-    "NUH_ALIAS": "yo_alias"
+    "NOW_URL_HUB_PASSWORD": "@now_url_hub_password"
   }
 }
 ```
 
-3. Run the `now-url-hub` cli. If you have a `npm` type deployment use `npm`'s prestart script for that. If using docker just RUN the cli with the required environment variables in place.
+3. Run the `now-url-hub` cli with no arguments (for convenience). If you have a `npm` type deployment use `npm`'s prestart script for that. If using docker just RUN the cli with the required environment variable `NOW_URL_HUB_PASSWORD` in place.
 
-Accessing a mapping is a simple get from `https://now-url-hub-ipmtcknuik.now.sh/alias/${YO_ALIAS}`; returns a JSON object with properties `alias` and `url`.
+Accessing a mapping is a simple get from `https://now-url-hub-ipmtcknuik.now.sh/alias/${YO_ALIAS}`; returns JSON like:
+
+``` js
+{
+  "alias": "yo_alias",
+  "url": "yo_alias-ipmtcknuik.now.sh"
+}
+```
 
 ***
 

@@ -19,10 +19,11 @@ if (argv.help) {
   process.exit(0)
 }
 
-const alias = argv.alias || process.env.NUH_ALIAS
+const alias = argv.alias ||
+  process.env.NOW_URL.replace(/^(.+)-[a-z]+\.now\.sh/, '$1')
 const url = argv.url || process.env.NOW_URL
-const password = argv.password || process.env.NUH_PASSWORD
+const password = argv.password || process.env.NOW_URL_HUB_PASSWORD
 
 save(alias, url, password)
-  .then(() => console.log(`${alias} -> ${url} mapping saved successfully`))
+  .then(() => console.log(`${alias} -> ${url} mapping saved`))
   .catch(err => console.error(err) && process.exit(1))
