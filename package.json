@@ -8,7 +8,8 @@
   },
   "unpkg": "./browser_load.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser-build": "browserify ./load.js > ./browser_load.js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,10 @@
   "homepage": "https://github.com/chiefbiiko/now-url-hub#readme",
   "dependencies": {
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "debug": "^4.1.0",
+    "tape": "^4.9.1"
   }
 }
