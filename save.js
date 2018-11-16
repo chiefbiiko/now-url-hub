@@ -1,22 +1,12 @@
 // meant for node use only
 
-const { request } = require('https')
+const got = require('got')
 
 const NOW_URL_HUB = 'now-url-hub-ipmtcknuik.now.sh' // !
 
-module.exports = (alias, url, password) => {
-  return new Promise((resolve, reject) => {
-    const req = request({
-      host: NOW_URL_HUB,
-      port: 41900,
-      path: '/mappings',
-      method: 'POST'
-    }, res => {
-      res.statusCode === 200
-        ? resolve()
-        : reject(`http error ${res.statusCode}`)
-    })
-    req.once('error', reject)
-    req.end(JSON.stringify({ alias, url, password }))
+module.exports = async (alias, url, password) => {
+  return await got('https://now-url-hub-ipmtcknuik.now.sh/mappings', {
+    method: 'POST',
+    body: JSON.stringify({ alias, url, password })
   })
 }

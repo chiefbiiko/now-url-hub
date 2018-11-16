@@ -16,6 +16,7 @@ const got = (url, cb) => {
 const load = alias => {
   return new Promise((resolve, reject) => {
     got(`https://${NOW_URL_HUB}/mappings/${alias}`, (err, buf) => {
+      if (err) return reject(err)
       try { resolve(JSON.parse(buf)) }
       catch (err) { reject(err) }
     })
