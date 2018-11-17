@@ -2,10 +2,10 @@
 
 const got = require('got')
 
-const NOW_URL_HUB = 'now-url-hub-ipmtcknuik.now.sh' // !
+const NOW_URL_HUB = require('./package.json').config.NOW_URL_HUB // !
 
 module.exports = async (alias, url, password) => {
-  return await got('https://now-url-hub-ipmtcknuik.now.sh/mappings', {
+  return await got(`https://${NOW_URL_HUB}/mappings`, {
     method: 'POST',
     body: JSON.stringify({ alias, url, password })
   })

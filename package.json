@@ -37,5 +37,8 @@
     "browserify": "^16.2.3",
     "debug": "^4.1.0",
     "tape": "^4.9.1"
+  },
+  "config": {
+    "NOW_URL_HUB" : "now-url-hub-oykrbcgrny.now.sh"
   }
 }

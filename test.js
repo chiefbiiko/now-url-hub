@@ -2,7 +2,7 @@ const tape = require('tape')
 const { get } = require('https')
 const { save } = require('./index.js')
 
-const NOW_URL_HUB = 'now-url-hub-ipmtcknuik.now.sh' // !
+const NOW_URL_HUB = require('./package.json').config.NOW_URL_HUB // !
 
 const got = (url, cb) => {
   get(url, res => {
